@@ -16,5 +16,22 @@ let STATE = {
 
 // Paso 1: al hacer click en el botón empezar, obtener la primera palabra a procesar. Debemos también ocultar el botón de empezar y mostrar el contenedor con la palabra a escribir. Añadir el listener de teclado
 
+let buttonStart = document.querySelector("button");
+buttonStart.addEventListener("click", function () {
+    buttonStart.style.display = "none";
+    let randomWord = document.querySelector("#next-word-card");
+    randomWord.classList.remove("w3-hide");
+    STATE.currentProgressWord = getNextWord();
+    randomWord.textContent = STATE.currentProgressWord;
 
+});
 
+document.body.addEventListener("keyup", handleInput);
+
+function handleInput(event) {
+    // En el objeto event, tenemos la propiedad 'key', que nos va a informar de qué tecla ha pulsado el usuario
+    let keyPressed = event.key;
+    let answer = document.querySelector(".answer").textContent = keyPressed;
+
+    console.log(event.keyCode);
+}
